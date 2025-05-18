@@ -50,7 +50,7 @@ void delay(int t) {
 void typer(string x) {
     for (int i = 0; i < x.length(); i++) {
         cout << x[i];
-        delay(40);
+        delay(0);
     }
 }
 void clear() {
@@ -288,78 +288,80 @@ public:
     }
     void chooseItem() {
         clear();
-        int opt;
+        string opt;
         displayInv();
-        cout << "\nChoose a number to equipped item:\n";
+        cout << "\nChoose a number to equip item:\n";
         while (true) {
             cout << ">";
             cin >> opt;
-            if (opt == 1) {
+            if (opt == "1") {
                 equipped = one;
                 break;
             }
-            else if (opt == 2) {
+            else if (opt == "2") {
                 equipped = two;
                 break;
             }
-            else if (opt == 3) {
+            else if (opt == "3") {
                 equipped = three;
                 break;
             }
-            else if (opt == 4) {
+            else if (opt == "4") {
                 equipped = four;
                 break;
             }
-            else if (opt == 5) {
+            else if (opt == "5") {
                 equipped = five;
                 break;
             }
-            else
-                cout << "Not a valid option. Please choose between 1 and 5." << endl;
+            else {
+                cout << "ERROR - INVALID OPTION" << endl;
+            }
         }
     }
     void pickUpItem() {
         clear();
         displayInv();
-        cout << "Choose a slot to swap " << currentArea->currItem.type << ">>" << currentArea->currItem.damage << " with, or '-1' to change your mind." << endl;
-        int opt;
+        cout << "Choose a slot to swap " << currentArea->currItem.type << ">>" << currentArea->currItem.damage << " with, or 'leave' to leave item." << endl;
+        string opt;
         while (true) {
             cout << ">";
             cin >> opt;
-            if (opt == 1) {
+            if (opt == "1") {
                 item cSave = one;
                 one = currentArea->currItem;
                 currentArea->currItem = cSave;
                 break;
             }
-            else if (opt == 2) {
+            else if (opt == "2") {
                 item cSave = two;
                 two = currentArea->currItem;
                 currentArea->currItem = cSave;
                 break;
             }
-            else if (opt == 3) {
+            else if (opt == "3") {
                 item cSave = three;
                 three = currentArea->currItem;
                 currentArea->currItem = cSave;
                 break;
             }
-            else if (opt == 4) {
+            else if (opt == "4") {
                 item cSave = four;
                 four = currentArea->currItem;
                 currentArea->currItem = cSave;
                 break;
             }
-            else if (opt == 5) {
+            else if (opt == "5") {
                 item cSave = five;
                 five = currentArea->currItem;
                 currentArea->currItem = cSave;
                 break;
             }
-            else if (opt == -1)
+            else if (opt == "leave")
                 break;
-            else
-                cout << "Not a valid option. Please choose between 1 and 5." << endl;
+            else {
+                cout << "ERROR - INVALID OPTION" << endl;
+            }
         }
     }
 };
